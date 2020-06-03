@@ -8,7 +8,7 @@ Write a program that accepts user input of the form
 and does the following:
  - If the user doesn't specify any input, your program should
    print the calendar for the current month. The 'datetime'
-   module may be helpful for this.
+   module may be helpful for this. 
  - If the user specifies one argument, assume they passed in a
    month and render the calendar for that month of the current year.
  - If the user specifies two arguments, assume they passed in
@@ -30,3 +30,22 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+
+today = datetime.today()
+today_month = int(today.strftime("%m"))
+today_year = int(today.strftime("%Y"))
+
+input1 = sys.argv
+
+if(len(input1)==1):
+  print(calendar.month(today_year, today_month))
+elif(len(input1)==2):
+  input_month = int(input1[1])
+  print(calendar.month(today_year, input_month))
+elif(len(input1)==3):
+  input_month = int(input1[1])
+  input_year = int(input1[2])
+  print(calendar.month(input_year, input_month))
+else:
+  print('Program expect argument to be `14_cal.py [month] [year]`')
